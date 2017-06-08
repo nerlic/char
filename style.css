@@ -1,0 +1,389 @@
+.body {
+  font-family: Tahoma;
+}
+.full {
+  background-color: white;
+  width: 95%;
+  min-height: 700px;
+  padding: 20px;
+  float: left;
+}
+
+.title {
+  font-family: Tahoma;
+  font-weight: lighter;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  background-color: #2c3e50;
+  color: white;
+  padding: 10px;
+}
+
+.titlenew {
+  font-family: Tahoma;
+  font-weight: lighter;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  background-color: red;
+  color: white;
+  padding: 10px;
+}
+.titlenew a {
+  color:black;
+  text-decoration: none;
+}
+.block {
+  float: left;
+  width: 1300px;
+  border: 0px solid pink;
+}
+.form {
+  float: left;
+  margin: 0px 0 0 10px;
+  width: 480px;
+  min-height: 590px;
+  background-color: white;
+  padding: 0 0 100px 0;
+  font-family: Tahoma;
+  border: 0px solid red;
+  background-color: black;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  color: #ecf0f1;
+}
+.form .form_row {
+  float:left;
+  width: 480px;
+  min-height: 50px;
+  border: 0px solid yellow;
+}
+.form .form_row .form_type {
+  float:left;
+  width: 230px;
+  height: 50px;
+  border: 0px solid green;
+}
+.form .form_row .form_type p{
+    margin-top: 10px;
+    margin-left: 10px;
+    float:left;
+    width: 200px;
+    font-size: 16px;
+    border: 0px solid violet;
+    background-color: #2c3e50;
+    padding: 5px;
+}
+.form .form_row .form_value {
+  float:left;
+  width: 230px;
+  height: 30px;
+    margin: 10px;
+    background-color: #2c3e50;
+}
+.form .form_row .form_gem{
+  width: 96px;
+  float:left;
+}
+.form .form_row_type .form_color{
+  width: 120px;
+  float:left;
+}
+
+.form .form_row_type .form_color button{
+width: 90px;
+    margin-left:15px;
+}
+
+.form .form_row .form_gem select{
+margin-left: 25px;
+}
+.form .form_row .form_gem button {
+  margin-left: 35px;
+}
+.todo {
+  border: 0px solid blue;
+  float: left;
+  width: 480px;
+  height: 590px;
+  font-family: Tahoma;
+  background-color: black;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  color: #ecf0f1;
+}
+.todo h2 {
+  font-weight: lighter;
+  background-color: #2c3e50;
+  color:white;
+  margin: 10px;
+  padding: 10px;
+}
+.todo li {
+  margin: 10px;
+}
+.todo ul span {
+  color:red;
+}
+#box {
+  margin-left: 10px;
+  float: left;
+  width: 300px;
+  height: 570px;
+  padding-bottom: 20px;
+  background-color: black;
+  font-family: Tahoma;
+  position: relative;
+}
+
+#box .name {
+  margin: 5px 0 0 10px;
+  float: left;
+  width: 300px;
+  font-size: 22px;
+}
+
+#box .specimen {
+  margin: 5px 0 0 10px;
+  float: left;
+  width: 300px;
+  font-size: 18px;
+}
+
+#box .level {
+  margin: 5px 0 0 10px;
+  float: left;
+  width: 300px;
+  color: #d7be8b;
+  font-size: 16px;
+}
+#box .sort {
+  margin: 5px 0 0 10px;
+  float: left;
+  width: 190px;
+  color: #a4a3a3;
+  font-size: 16px;
+  border: 0px solid red;
+}
+#box .weaponpower {
+  margin: 5px 10px 0 0px;
+  float: right;
+  clear: right;
+  width: 80px;
+  font-size: 18px;
+  border: 0px solid blue;
+  color: yellow;
+}
+#box .stat {
+  margin: 5px 0 0 10px;
+  float: left;
+  width: 300px;
+  color: #739bd8;
+  font-size: 16px;
+}
+#box .type {
+  margin: 5px 0 0 10px;
+  float: left;
+  width: 300px;
+  color: #ffffff;
+  font-size: 16px;
+}
+#box .header {
+  margin: 5px 0 0 0px;
+  float: left;
+  width: 300px;
+  color: #878986;
+  text-align: center;
+  font-size: 10px;
+}
+#box .line {
+  height: 1px;
+  width: 280px;
+  border: 0 solid red;
+  background-image: linear-gradient(to right, #333, #ccc, #333);
+  margin: 10px 0 0 10px;
+  float: left;
+}
+
+#box .gem {
+  margin: 5px 0 0 10px;
+  float: left;
+  width: 300px;
+  color: #ffffff;
+  font-size: 10px;
+  line-height: 30px;
+  text-align: center;
+  border: 0px solid white;
+}
+
+#box .gem_value {
+  margin: 5px 10px 0 0px;
+  float: left;
+  width: 15px;
+  color: #a5acb4;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  border: 0px solid red;
+}
+
+#box .gem_startend {
+  margin: 5px 0 0 -10px;
+  float: left;
+  width: 15px;
+  color: #a5acb4;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  border: 0px solid red;
+}
+#box .gem_text {
+  margin: 5px 0 0 10px;
+  float: left;
+  width: 120px;
+  color: #a5acb4;
+  font-size: 16px;
+  line-height: 30px;
+  border: 0px solid green;
+}
+#box .gem img {
+  width: 20px;
+  height: 20px;
+  float:left;
+  margin: 0 2px 0 0;
+  border: 0px solid brown;
+}
+#box .footer {
+  width: 300px;
+  position: absolute;;
+  float: left;
+  color: gray;
+  bottom: 0;
+  margin: 10px 0 10px 40px;
+  padding-bottom: 10px;
+
+}
+#box .gems {
+  width: 300px;
+  float:left;
+  border: 0px solid orange;
+}
+.donate {
+  float: right;
+}
+
+
+}
+
+.form_value {
+    
+}
+
+.form_row h2 {
+    height: 28px;
+    margin: 0 auto;
+  background-color: #2c3e50;
+    width: 450px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight:
+        lighter;
+}
+
+.form .form_row_type {
+  float:left;
+  width: 480px;
+  height: 30px;
+    margin: 5px auto;
+  border: 0px solid yellow;
+}
+
+.form .form_row .form_value p{
+    margin-top: 2px;
+    margin-left:10px;
+    float:left;
+    width: 200px;
+    height: 15px;
+    font-size: 16px;
+    border: 0px solid red;
+    color:black;
+    background-color: white;
+    padding: 5px;
+}
+
+.form .form_row .form_value input{
+    margin-top: 2px;
+    margin-left:10px;
+    float:left;
+    width: 200px;
+    font-size: 16px;
+    border: 0px solid red;
+    padding: 5px;
+    height: 15px;
+}
+.form .form_row .form_value_dmg input{
+    margin-top: 2px;
+    margin-left:10px;
+    float:left;
+    width: 90px;
+    font-size: 16px;
+    border: 0px solid red;
+    padding: 5px;
+    height: 15px;
+}
+
+.form .form_row .form_value select{
+
+    margin-left:10px;  float:left;
+    width: 200px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+
+
+.full .donate p{
+    font-size: 10px;
+    color:white;
+    font-family: Tahoma;
+    margin-left: 10px;
+    float:left;
+}
+
+.full .donate a{
+    font-size: 10px;
+    color:dodgerblue;
+    text-decoration: none;
+    font-family: Tahoma;
+}
+
+.form .form_row .form_value_dmg {
+  float:left;
+  width: 230px;
+  height: 30px;
+    margin: 10px;
+    background-color: #2c3e50;
+}
+
+.form .form_row .form_type_dmg p {
+    margin-top: 2px;
+    margin-left:10px;
+    float:left;
+    width: 80px;
+    font-size: 16px;
+    border: 1px solid red;
+    background-color: #ffffff;
+    padding: 5px;
+    height: 15px;
+}
+
+
+
+.form .form_row .form_value_dmg .dmgvalue {
+    color: gray;
+    background-color: white;
+    float:right;
+    clear: right;
+    width: 70px;
+    margin-top: 2px;
+    margin-right:10px;
+    font-size: 16px;
+    border: 0px solid red;
+    padding: 5px;
+    height: 15px;
+}

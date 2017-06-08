@@ -1,0 +1,443 @@
+<!doctype html>
+<html ng-app="app" ng-controller="AppController as app">
+<head>
+    <title>DSO Weapons Simulator  - Beta Version {{app.versionApp}}</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="DSO Weapons Simulator">
+    <meta name="author" content="Michael Mašek">
+    <meta name="keywords" content="DSOCalc, DSO, Drakensang Online, Weapons Simulator">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.4.9/angular-locale_cs-cz.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>    
+    <script src="app.js"></script>
+    <script src="html2canvas.js"></script>
+    <script src="html2canvas.svg.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+  <div class="full">
+
+<div class="block">
+<!--<div class="todo">
+  <h2>News in version 0.61</h2>
+    <li>Add automatic increase critic hit value by lvl </li>
+    <ul>(<span>NEED ADD CRITIC HIT VALUE FROM LVL 50</span>)</ul>
+  <h2>News in version 0.56</h2>
+    <li>Add automatic increase dmg value by lvl</li> 
+    <ul>(<span>NEED ADD DMG VALUE FROM LVL 50</span>)</ul>
+  <h2>News in version 0.51</h2>
+    <li>Add old sword speed 1.05 (stats for lvl 50-55)</li>
+  <h2>News in version 0.5</h2>
+    <li>New design web page</li>
+  <h2>News in version 0.4</h2>
+    <li>add critic hit & critic dmg calculation (Weapon Power aka WP)</li>
+    <li>add remove button for gem</li>
+  <h2>News in version 0.3</h2>
+    <li>type weapons for ranger</li>
+    <li>add speed value to calculation</li>
+  <h2>News in version 0.2</h2>
+    <li>type weapons for dragonknight, mage and steam mechanicus</li>
+    <li>automatic name & attack speed after choose weapon type</li>
+    <li>automatic change base dmg weapon after change item level</li>
+    <li>download your simulation -- one click</li> 
+</div>--> 
+<body ng-app="app" ng-controller="AppController">
+
+First name: <input type="text" ng-model="weapon.basicDmgDown"> <br />
+Last name: <input type="text" ng-model="weapon.damagePercent"> <br />
+
+  <div class="form">
+    <div class="form_row">
+      <div class="form_type">
+        <p>Choose type</p>
+      </div>
+      <div class="form_value">
+        <select ng-model="app.weaponType" ng-change="app.update()">
+          <optgroup label="Dragonknight">
+            <option value="axeonehand">1h Axe</option>
+            <option value="swordonehand">1h Sword</option>
+            <option value="hammeronehand">1h Mace</option>
+            <option value="axe">2h Axe</option>
+            <option value="sword">2h Sword</option>
+            <option value="oldsword">2h Sword (old 1.05 speed)</option>
+            <option value="hammer">2h Hammer</option>
+          </optgroup>
+          <optgroup label="Mage">
+            <option value="staffonehand">1h Staff</option>
+            <option value="staff">2h Staff</option>
+          </optgroup>
+          <optgroup label="Steam Mechanicus">
+            <option value="gunonehand">1h Gun</option>
+            <option value="carbine">2h Carbine</option>
+          </optgroup>
+          <optgroup label="Ranger">
+            <option value="shortbow">Short Bow</option>
+            <option value="longbow">Long Bow</option>
+          </optgroup>
+         </select>
+      </div>
+      <div class="form_row" ng-show="app.weaponType==='axe'">
+sekera
+      </div>
+
+      <div class="form_row" ng-show="app.weaponType==='sword'">
+    <div class="form_row">
+      <div class="form_type">
+        <p>Character Level</p>
+      </div>
+      <div class="form_value">
+        <input type="number" ng-model="app.charLevel" ng-change="app.update()" min="50" max="60" ng-required ng-pattern="/\d+/" />
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <div class="form_row">
+      <div class="form_type">
+          <p>Weapon</p>
+      </div>
+      <div class="form_value">
+      </div>
+    </div>
+    <div class="form_row">
+      <div class="form_type">
+        <p>Basic Damage {{ getTotal() }}</p>
+      </div>
+      <div class="form_value_dmg">
+          <input type="number" ng-model="weapon.basicDmgDown">
+          <input type="number" ng-model="weapon.basicDmgUp">
+      </div>
+    </div>
+    <div class="form_row">
+      <div class="form_type">
+          <p>Attack Speed {{getTwoGems()}}</p>
+      </div>
+      <div class="form_value">
+          <input type="number" ng-model="app.attackSpeed">
+      </div>
+    </div>
+    <div class="form_row">
+      <div class="form_type">
+        <p>Increased Weapon Damage</p>
+      </div>
+      <div class="form_value">
+        <input type="number" ng-model="weapon.increasedWeaponDamage" min="0" max="321"  />
+      </div>
+    </div>
+    <div class="form_row">
+      <div class="form_type">
+          <p>Damage Value</p>
+      </div>
+      <div class="form_value">
+        <input type="number" ng-model="weapon.damageValue" min="0" max="500" />
+      </div>
+    </div>
+    <div class="form_row">
+      <div class="form_type">
+          <p>Increased Damage</p>
+      </div>
+      <div class="form_value">
+        <input type="number" ng-model="weapon.increasedDamage" min="0" max="500" />
+      </div>
+    </div>
+    <div class="form_row">
+      <div class="form_type">
+          <p>Attack Speed Value</p>
+      </div>
+      <div class="form_value">
+        <input type="number" ng-model="app.attackSpeedValue" min="0" max="76" />
+      </div>
+    </div>
+    <div class="form_row">
+      <div class="form_type">
+          <p>Critic Hit Value</p> 
+      </div>
+      <div class="form_value">
+        <input ng-model="app.criticHitValue" min="0" max="9000" />
+      </div>
+    </div>
+    <div class="form_row">
+      <div class="form_type">
+          <p>Critical % damage</p>
+      </div>
+      <div class="form_value">
+          <input type="number" ng-model="app.criticDamage" min="0" max="321" />
+      </div>
+    </div>
+    <a href="" ng-click="save()">Save</a>
+
+      <div class="form_row">
+          <h2>Gems</h2>
+
+      <div class="form_gem">
+      <select ng-model="weapon.ratings[0]">
+        <optgroup label="None">
+            <option value="0">No</option>
+        </optgroup>      
+        <optgroup label="Old">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="7">7</option>
+            <option value="11">11</option>
+            <option value="16">16</option>
+            <option value="22">22</option>
+            <option value="29">29</option>
+            <option value="38">38</option>
+        </optgroup>
+        <optgroup label="New">
+            <option value="2.0">2</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="22.0">22</option>
+            <option value="33">33</option>
+            <option value="48">48</option>
+            <option value="60">60</option>
+        </optgroup>     
+        </select>
+      </div>
+      <div class="form_gem">
+      <select ng-model="weapon.ratings[1]">
+        <optgroup label="None">
+            <option value="0">No</option>
+        </optgroup>   
+        <optgroup label="Old">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="7">7</option>
+            <option value="11">11</option>
+            <option value="16">16</option>
+            <option value="22">22</option>
+            <option value="29">29</option>
+            <option value="38">38</option>
+        </optgroup>
+        <optgroup label="New">
+            <option value="2.0">2</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="22.0">22</option>
+            <option value="33">33</option>
+            <option value="48">48</option>
+            <option value="60">60</option>
+        </optgroup>
+        </select>
+    </div>
+    <div class="form_gem">
+      <select ng-model="weapon.ratings[2]">
+        <optgroup label="None">
+            <option value="0">No</option>
+        </optgroup>   
+        <optgroup label="Old">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="7">7</option>
+            <option value="11">11</option>
+            <option value="16">16</option>
+            <option value="22">22</option>
+            <option value="29">29</option>
+            <option value="38">38</option>
+        </optgroup>
+        <optgroup label="New">
+            <option value="2.0">2</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="22.0">22</option>
+            <option value="33">33</option>
+            <option value="48">48</option>
+            <option value="60">60</option>
+        </optgroup>
+        </select>
+    </div>
+    <div class="form_gem">
+      <select ng-model="weapon.ratings[3]">
+        <optgroup label="None">
+            <option value="0">No</option>
+        </optgroup>   
+        <optgroup label="Old">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="7">7</option>
+            <option value="11">11</option>
+            <option value="16">16</option>
+            <option value="22">22</option>
+            <option value="29">29</option>
+            <option value="38">38</option>
+        </optgroup>
+        <optgroup label="New">
+            <option value="2.0">2</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="22.0">22</option>
+            <option value="33">33</option>
+            <option value="48">48</option>
+            <option value="60">60</option>
+        </optgroup>
+        </select>
+    </div>
+    <div class="form_gem">
+      <select ng-model="weapon.ratings[4]">
+        <optgroup label="None">
+            <option value="0">No</option>
+        </optgroup>   
+        <optgroup label="Old">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="7">7</option>
+            <option value="11">11</option>
+            <option value="16">16</option>
+            <option value="22">22</option>
+            <option value="29">29</option>
+            <option value="38">38</option>
+        </optgroup>
+        <optgroup label="New">
+            <option value="2.0">2</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="22.0">22</option>
+            <option value="33">33</option>
+            <option value="48">48</option>
+            <option value="60">60</option>
+        </optgroup>
+        </select>
+    </div>
+    <div class="form_gem">
+        <button ng-click="removeGem($index)">-</button>
+      </div>
+      <div class="form_gem">
+        <button ng-click="removeGem($index)">-</button>
+      </div>
+      <div class="form_gem">
+        <button ng-click="removeGem($index)">-</button>
+      </div>
+      <div class="form_gem">
+        <button ng-click="removeGem($index)">-</button>
+      </div>
+      <div class="form_gem">
+        <button ng-click="removeGem($index)">-</button>
+      </div>
+    </div> 
+    
+
+    </div>
+
+
+  <div id="box">
+    <hr class="line">
+    <p class="header">
+      Base Values {{getValueSum()}}
+    </p>
+    <div class="gems">
+    <p class="gem_text" ng-if="getValue() != '0'">
+    + Damage {{getValue()}} 
+    </p>
+  
+    <p class="gem_value" ng-if="weapon.ratings[0] != '0' ">
+    {{weapon.ratings[0] | number:0}}    
+    </p>
+    <p class="gem_value" ng-if="weapon.ratings[1] != '0' ">
+    {{weapon.ratings[1] | number:0}}  
+    </p>
+    <p class="gem_value" ng-if="weapon.ratings[2] != '0' ">
+    {{weapon.ratings[2] | number:0}}  
+    </p>
+    <p class="gem_value" ng-if="weapon.ratings[3] != '0' ">
+    {{weapon.ratings[3] | number:0}}  
+    </p>
+    <p class="gem_value" ng-if="weapon.ratings[4] != '0' ">
+    {{weapon.ratings[4] | number:0}} 
+    </p>
+  
+    </div>
+    <div class="gem">
+    <img ng-src="images/r-{{weapon.ratings[0]}}.png" ng-if="weapon.ratings[0] != '0' "/>
+    <img ng-src="images/r-{{weapon.ratings[1]}}.png" ng-if="weapon.ratings[1] != '0' "/>
+    <img ng-src="images/r-{{weapon.ratings[2]}}.png" ng-if="weapon.ratings[2] != '0' ">
+    <img ng-src="images/r-{{weapon.ratings[3]}}.png" ng-if="weapon.ratings[3] != '0' "/>
+    <img ng-src="images/r-{{weapon.ratings[4]}}.png" ng-if="weapon.ratings[4] != '0' "/>
+    </div>
+    <hr class="line">
+    <p class="header">
+      Enchantments
+    </p>
+    <p class="stat" ng-if="getIncreasedWeaponDamage()">
+    {{getIncreasedWeaponDamage()}}% increased weapon damage
+    </p>
+    <p class="stat" ng-if="getDamageValue()">
+    {{getDamageValue()}}% increased damage
+    <p class="stat" ng-if="getDamageValue()">
+    + {{getDamageValue() | number:0}} Damage
+    </p>
+    <p class="stat" ng-if="app.getAttackSpeedValue() != app.attackSpeed">
+    {{app.attackSpeedValue}}% Attack Speed
+    </p>
+    <p class="stat" ng-if="app.criticHitValue">
+    {{app.criticHitValueLevel | number:0}} Critical Hit Value
+    </p>
+    <p class="stat" ng-if="app.criticDamage">
+    {{app.criticDamage}}% Critical damage
+    </p>
+    <p class="stat">
+    {{weapon.basicDmgUp + weapon.basicDmgDown}}
+    </p>
+    <p class="stat">
+    {{getDamage()}}
+    </p>    
+    <hr class="line">
+    
+    <p class="footer"> Weapon simulation for DSO http://dsocalc.musichere.net</p>
+    </div>
+    <div style="float: right; width: 300px;">
+    <input type="button" id="btnSave" value="Save PNG"/>
+  </div>
+</div>
+</div>
+
+<div id="img"></div>
+<script type="text/javascript">
+  $(function() {
+      $("#btnSave").click(function() {
+          html2canvas($("#box"), {
+              onrendered: function(canvas) {
+                  theCanvas = canvas;
+                  document.body.appendChild(canvas);
+
+                  // Convert and download as image
+                  Canvas2Image.saveAsPNG(canvas);
+                  $("#img").append(canvas);
+                  // Clean up
+                  //document.body.removeChild(canvas);
+              }
+          });
+      });
+  });
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73640925-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
