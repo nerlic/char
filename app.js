@@ -27,6 +27,7 @@
         $scope.getDamageValue = function () {
             return $scope.weapon.damageValue;
         };
+        
         $scope.getIncreasedDamage = function () {
             return $scope.weapon.increasedDamage;
         };
