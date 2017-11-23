@@ -1,0 +1,48 @@
+<div class='form' ng-show="app.isSelected('belt')">
+    <div class="form_row">
+      <div class="form_type">
+        <p>Belt222</p>
+      </div>
+      <div class="form_value">
+      </div>
+      <div class="form_type">
+        <p>(Hips, Belt)</p>
+      </div>
+      <hr class="row">   
+      <div class="form_type">
+        <span>Base Values</span>
+      </div>
+      <div class="form_type">
+        <p><span class="value" ng-if="beltBasicDamage">+{{beltBasicDamage}}</span> Damage</p>
+      </div>
+      <div class="form_value">
+      <input type="number" ng-model="beltBasicDamage" min="0" max="150">
+      </div>
+      <div class="form_type">
+        <p><span class="value" ng-if="beltBasicHealthPoints">+{{beltBasicHealthPoints}}</span>Health Points</p>
+      </div>
+      <div class="form_value">
+      <input type="number" ng-model="beltBasicHealthPoints" min="0" max="2500">
+      </div>
+      <div class="form_type">
+        <p><span class="value" ng-if="beltBasicResistance">+{{beltBasicResistance}}</span>All resistance values</p>
+      </div> 
+      <div class="form_value">
+      <input type="number" ng-model="beltBasicResistance" min="0" max="2500">
+      </div>
+      <div class="form_type">
+      </div>
+      <hr class="row">   
+      <div class="form_type">
+        <span>Enchantments</span>
+      </div>
+      <hr class="row">   
+      <div class="form_type">
+        <span>Unique Values</span>
+      </div>
+      <hr class="row">   
+      <div class="form_type">
+        <span>Set</span>
+      </div>
+    </div>
+</div>

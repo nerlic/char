@@ -3,9 +3,9 @@
 <head>
     <title>Character Simulator {{app.versionApp}}</title>
     <meta charset="utf-8" />
-    <meta name="description" content="Character Simulator">
+    <meta name="description" content="DSO Weapons Simulator">
     <meta name="author" content="Michael Mašek">
-    <meta name="keywords" content="DSOCalc, DSO, Drakensang Online, Character Simulator">
+    <meta name="keywords" content="DSOCalc, DSO, Drakensang Online, Weapons Simulator">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.4.9/angular-locale_cs-cz.min.js"></script>
@@ -15,7 +15,7 @@
     <script src="html2canvas.svg.js"></script>
     <link rel="stylesheet/less" type="text/css" href="styles.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 
@@ -51,7 +51,7 @@
     -->
   <div class="form">
 
-
+    <a href="" ng-click="save()">Save</a>
 
       <div class="form_value">
 
@@ -75,51 +75,19 @@
   </div>
   <div class="equip">
     <div class="item">
-      <img ng-if="app.isSelected('trophy') > 0" ng-src="equip/active-trophy-1.png" ng-click="app.selectTab('trophy')"/>
     </div>
     <div class="item">
-      <img ng-if="app.isSelected('shoulders') > 0" ng-src="equip/shoulders-active-1.png" ng-click="app.selectTab('shoulders')"/>
-      <img ng-if="app.isSelected('torso') > 0" ng-src="equip/torso-active-1.png" ng-click="app.selectTab('torso')"/>
     </div>
     <div class="item">
     </div>
     <div class="item" ng-class="{active: app.isSelected('trophy')}">
-      <img ng-if="app.isSelected('trophy') == 0" ng-src="equip/trophy.png" ng-click="app.selectTab('trophy')"/>
-      <img ng-if="app.isSelected('trophy') > 0" ng-src="equip/active-trophy.png" ng-click="app.selectTab('trophy')"/>
+      <img ng-src="equip/trophy.png" ng-click="app.selectTab('trophy')"/>
     </div>
     <div class="item" ng-class="{active: app.isSelected('weapon')}">
       <img ng-src="equip/weapon.png" ng-click="app.selectTab('weapon')"/>
     </div>
   </div>
   <div class="equip">
-    <div class="item">
-    </div> 
-    <div class="item">
-      <img ng-if="app.isSelected('shoulders') == 0 && app.isSelected('torso') == 0" ng-src="equip/char-5.png"/>
-      <img ng-if="app.isSelected('shoulders') != 0" ng-src="equip/shoulders-active-2.png" ng-click="app.selectTab('shoulders')"/>
-      <img ng-if="app.isSelected('torso') != 0" ng-src="equip/torso-active-2.png" ng-click="app.selectTab('torso')"/>
-    </div> 
-    <div class="item">
-      <img ng-if="app.isSelected('torso') == 0" ng-src="equip/char-8.png"/>
-      <img ng-if="app.isSelected('torso') != 0" ng-src="equip/torso-active-4.png" ng-click="app.selectTab('torso')"/>
-    </div>     
-    <div class="item">
-    </div> 
-  </div>
-  <div class="equip">
-    <div class="item">
-    </div>
-    <div class="item">
-      <img ng-if="app.isSelected('shoulders') != 0" ng-src="equip/shoulders-active-3.png" ng-click="app.selectTab('shoulders')"/>
-      <img ng-if="app.isSelected('torso') != 0" ng-src="equip/torso-active-3.png" ng-click="app.selectTab('torso')"/>
-    </div>
-    <div class="item">
-    </div>
-    <div class="item">
-    </div>
-    <div class="item" ng-class="{active: app.isSelected('weapon')}">
-      <img ng-src="equip/weapon.png" ng-click="app.selectTab('weapon')"/>
-    </div>
   </div>
   <div class="equip">
       <div class="item" ng-class="{active: app.isSelected('helmet')}">
@@ -138,8 +106,6 @@
         <img ng-src="equip/boots.png" ng-click="app.selectTab('boots')"/>
       </div>
   </div>
-</div>
-</div>
 </div>
 <div class='form' ng-show="app.isSelected('amulet')">
     <div class="form_row">
@@ -1035,7 +1001,54 @@
       </div>
     </div>
   </div>
-  <div ng-include="'belt.html'"></div>
+  <div class='form' ng-show="app.isSelected('belt')">
+    <div class="form_row">
+      <div class="form_type">
+        <p>Belt</p>
+      </div>
+      <div class="form_value">
+      </div>
+      <div class="form_type">
+        <p>(Hips, Belt)</p>
+      </div>
+      <hr class="row">   
+      <div class="form_type">
+        <span>Base Values</span>
+      </div>
+      <div class="form_type">
+        <p><span class="value" ng-if="beltBasicDamage">+{{beltBasicDamage}}</span> Damage</p>
+      </div>
+      <div class="form_value">
+      <input type="number" ng-model="beltBasicDamage" min="0" max="150">
+      </div>
+      <div class="form_type">
+        <p><span class="value" ng-if="beltBasicHealthPoints">+{{beltBasicHealthPoints}}</span>Health Points</p>
+      </div>
+      <div class="form_value">
+      <input type="number" ng-model="beltBasicHealthPoints" min="0" max="2500">
+      </div>
+      <div class="form_type">
+        <p><span class="value" ng-if="beltBasicResistance">+{{beltBasicResistance}}</span>All resistance values</p>
+      </div> 
+      <div class="form_value">
+      <input type="number" ng-model="beltBasicResistance" min="0" max="2500">
+      </div>
+      <div class="form_type">
+      </div>
+      <hr class="row">   
+      <div class="form_type">
+        <span>Enchantments</span>
+      </div>
+      <hr class="row">   
+      <div class="form_type">
+        <span>Unique Values</span>
+      </div>
+      <hr class="row">   
+      <div class="form_type">
+        <span>Set</span>
+      </div>
+    </div>
+  </div>
   <div class='form' ng-show="app.isSelected('ring1')">
      <div class="form_row">
       <div class="form_type">
@@ -1235,7 +1248,6 @@
       </div> 
     </div>
   </div>
-  <!--
   <div class="form" ng-show="zbran">
     <div class="form_row">
       <div class="form_type">
@@ -1466,9 +1478,12 @@
     </div> 
     </div>
   </div>
-
-
-
+<!-- 
+ZBRAŇ KONEC
+-->
+<!-- 
+OZDOBA START
+-->
 
   <div class="form" ng-show="ozdoba">
     <div class="form_row">
@@ -1617,17 +1632,10 @@
   </div>
 </div>
 </div>
-OZDOBA START
--->
+<div id="header">
+text
+</div>
 <div id="img"></div>
-</div>
-<div class="stat">
-  Statistika
-    <a href="" ng-click="save()">Save</a>
-
-</div>
-
-
 <script type="text/javascript">
   $(function() {
       $("#btnSave").click(function() {

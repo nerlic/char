@@ -1,0 +1,9 @@
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+@medium-blue: @nice-blue + #311;
+
+#header { 
+	color: red;
+}
+
+

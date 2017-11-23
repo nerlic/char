@@ -1,51 +1,46 @@
-.body {
-  font-family: Tahoma;
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+@medium-blue: @nice-blue + #311;
+
+@unique-color: #f1c40f;
+@set-color: green;
+@enchantment-color: blue;
+
+#header { 
+	color: @nice-blue;
 }
+
+body {
+	font-family: Tahoma;
+	background-color: #000;
+	float: left;
+}
+
 .full {
   background-color: black;
-  width: 95%;
+  width: 1580px;
   min-height: 700px;
   padding: 20px;
   float: left;
+  border: 1px solid blue;
 }
 
-.title {
-  font-family: Tahoma;
-  font-weight: lighter;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  background-color: #2c3e50;
-  color: white;
-  padding: 10px;
-}
-
-.titlenew {
-  font-family: Tahoma;
-  font-weight: lighter;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  background-color: red;
-  color: white;
-  padding: 10px;
-}
-.titlenew a {
-  color:black;
-  text-decoration: none;
-}
 .block {
   float: left;
-  width: 1300px;
-  border: 0px solid pink;
+  width: 990px;
+  border: 1px solid pink;
 }
 .form {
   float: left;
   width: 480px;
   min-height: 290px;
-  background-color: white;
-  padding: 0 0 100px 0;
+  padding: 0 0 50px 0;
   font-family: Tahoma;
-  border: 0px solid red;
+  border: 1px solid yellow;
   background-color: black;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   color: #ecf0f1;
+  margin-right: 10px;
 }
 .form .form_row {
   width: 400px;
@@ -54,7 +49,7 @@
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border: 1px solid #222222;
- display: table;
+  display: table;
   margin: 0 auto;
 }
 .form .form_row .form_type {
@@ -77,7 +72,7 @@
     margin-top: 5px;
     margin-left: 10px;
     float:left;
-    color:yellow;
+    color: @unique-color;
     width: 200px;
     font-size: 12px;
     border: 0px solid green;
@@ -181,7 +176,7 @@
     float:left;
     max-width: 50px;
     font-size: 12px;
-    color: #936B00;
+    color: @unique-color;
     border: 0px solid blue;
     margin: 0px 10px 0px 0px;
     text-align: right;
@@ -294,205 +289,6 @@
   margin-top: 5px;
 
 }
-.form .form_row_type .form_color{
-  width: 120px;
-  float:left;
-}
-
-.form .form_row_type .form_color button{
-  width: 90px;
-  margin-left:15px;
-}
-
-
-.form .form_row .form_gem button {
-  margin-left: 35px;
-}
-.todo {
-  border: 0px solid blue;
-  float: left;
-  width: 480px;
-  height: 590px;
-  font-family: Tahoma;
-  background-color: black;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  color: #ecf0f1;
-}
-.todo h2 {
-  font-weight: lighter;
-  background-color: #2c3e50;
-  color:white;
-  margin: 10px;
-  padding: 10px;
-}
-.todo li {
-  margin: 10px;
-}
-.todo ul span {
-  color:red;
-}
-#box {
-  margin-left: 10px;
-  float: left;
-  width: 300px;
-  height: 570px;
-  padding-bottom: 20px;
-  background-color: black;
-  font-family: Tahoma;
-  position: relative;
-}
-
-#box .name {
-  margin: 5px 0 0 10px;
-  float: left;
-  width: 300px;
-  font-size: 22px;
-}
-
-#box .specimen {
-  margin: 5px 0 0 10px;
-  float: left;
-  width: 300px;
-  font-size: 18px;
-}
-
-#box .level {
-  margin: 5px 0 0 10px;
-  float: left;
-  width: 300px;
-  color: #d7be8b;
-  font-size: 16px;
-}
-#box .sort {
-  margin: 5px 0 0 10px;
-  float: left;
-  width: 190px;
-  color: #a4a3a3;
-  font-size: 16px;
-  border: 0px solid red;
-}
-#box .weaponpower {
-  margin: 5px 10px 0 0px;
-  float: right;
-  clear: right;
-  width: 80px;
-  font-size: 18px;
-  border: 0px solid blue;
-  color: yellow;
-}
-#box .stat {
-  margin: 5px 0 0 10px;
-  float: left;
-  width: 300px;
-  color: #739bd8;
-  font-size: 13px;
-}
-#box .type {
-  margin: 5px 0 0 10px;
-  float: left;
-  width: 300px;
-  color: #ffffff;
-  font-size: 13px;
-}
-#box .header {
-  margin: 5px 0 0 0px;
-  float: left;
-  width: 300px;
-  color: #878986;
-  text-align: center;
-  font-size: 10px;
-}
-#box .line {
-  height: 1px;
-  width: 280px;
-  border: 0 solid red;
-  background-image: linear-gradient(to right, #333, #ccc, #333);
-  margin: 10px 0 0 10px;
-  float: left;
-}
-
-#box .gem {
-  margin: 5px 0 0 10px;
-  float: left;
-  width: 300px;
-  color: #ffffff;
-  font-size: 10px;
-  line-height: 30px;
-  text-align: center;
-  border: 0px solid white;
-}
-
-#box .gem_value {
-  margin: 5px 0px 0 0px;
-  float: left;
-  width: 15px;
-  color: #a5acb4;
-  font-size: 13px;
-  line-height: 30px;
-  text-align: center;
-  border: 0px solid red;
-}
-
-#box .gem_startend {
-  margin: 5px 0 0 -10px;
-  float: left;
-  width: 15px;
-  color: #a5acb4;
-  font-size: 16px;
-  line-height: 30px;
-  text-align: center;
-  border: 0px solid red;
-}
-#box .gem_text {
-  margin: 5px 0 0 10px;
-  float: left;
-  width: 100px;
-  color: #a5acb4;
-  font-size: 13px;
-  line-height: 30px;
-  border: 0px solid green;
-}
-
-#box .gem_space {
-  margin: 5px 5px 0 0px;
-  float: left;
-  width: 3px;
-  color: #a5acb4;
-  font-size: 13px;
-  line-height: 30px;
-  border: 0px solid white;
-}
-#box .gem img {
-  width: 20px;
-  height: 20px;
-  float:left;
-  margin: 0 2px 0 0;
-  border: 0px solid brown;
-}
-#box .footer {
-  width: 300px;
-  position: absolute;;
-  float: left;
-  color: gray;
-  bottom: 0;
-  margin: 10px 0 10px 40px;
-  padding-bottom: 10px;
-
-}
-#box .gems {
-  width: 300px;
-  float:left;
-  border: 0px solid orange;
-}
-.donate {
-  float: right;
-}
-
-
-}
-
-
-
 .form_row h2 {
     height: 28px;
     margin: 0 auto;
@@ -551,68 +347,54 @@
     font-size: 12px;
     padding: 5px;
 }
-
-.form .form_row .form_value_dmg {
-  float:left;
-  width: 230px;
-  height: 30px;
-    margin: 10px;
-    background-color: #2c3e50;
-}
-
-.form .form_row .form_type_dmg p {
-    margin-top: 2px;
-    margin-left:10px;
-    float:left;
-    width: 80px;
-    font-size: 16px;
-    border: 1px solid red;
-    background-color: #ffffff;
-    padding: 5px;
-    height: 15px;
-}
-
-
-
-.form .form_row .form_value_dmg .dmgvalue {
-    color: gray;
-    background-color: white;
-    float:right;
-    clear: right;
-    width: 70px;
-    margin-top: 2px;
-    margin-right:10px;
-    font-size: 16px;
-    border: 0px solid red;
-    padding: 5px;
-    height: 15px;
-}
 .form .equipment {
-  width: 280px;
-  height: 400px;
-  border: 0px solid red;
+  width: 450px;
+  height: 450px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid #222222;  
   margin: 0 auto;
+  background-color: #000;
 }
 .form .equipment .equip {
-  width: 50px;
-  height: 300px;
+  width: 80px;
+  height: 480px;
   float:left;
   border: 0px solid blue;
-  margin: 0 0px 0 20px;
+  margin: 0 0px 0 10px;
 }
 
 .form .equipment .equip .item {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border: 0px solid yellow;
   margin: 10px 0 0 0;
   float: left;
 }
 
 .form .equipment .equip .item img {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   float: left;
   margin: 0 2px 0 0;
   border: 0px solid brown;
+  display: table;
+
+}
+
+.active {
+	background-color: red;
+}
+
+.stat {
+  float: left;
+  width: 580px;
+  min-height: 450px;
+  padding: 0 0 0px 0;
+  font-family: Tahoma;
+  border: 1px solid yellow;
+  background-color: black;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  color: #ecf0f1;
 }
